@@ -1,22 +1,20 @@
-import React, { StrictMode } from 'react'
-import  ReactDOM  from 'react-dom/client'
-import './index.css'
-import App from './App.jsx'
-import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client'
-import './App.css'
-
-
-
+import React, { StrictMode } from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import App from "./App.jsx";
+import { ApolloClient, InMemoryCache, HttpLink } from "@apollo/client";
+import { ApolloProvider } from "@apollo/client/react";
+import "./App.css";
 
 const client = new ApolloClient({
-  uri: 'http://localhost:4000/',
-  cache: new InMemoryCache()
-}) 
+  link: new HttpLink({ uri: "http://localhost:4000/" }),
+  cache: new InMemoryCache(),
+});
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <ApolloProvider client={client}>
       <App />
-    </ApolloProvider> 
-  </React.StrictMode>,
-)
+    </ApolloProvider>
+  </React.StrictMode>
+);

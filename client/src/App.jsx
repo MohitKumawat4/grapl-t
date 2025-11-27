@@ -1,5 +1,6 @@
-import './App.css'
-import { gql, useQuery } from '@apollo/client'
+import "./App.css";
+import { gql } from "@apollo/client";
+import { useQuery } from "@apollo/client/react";
 
 const GET_USERS = gql`
   query GetUsers {
@@ -22,16 +23,25 @@ function App() {
       <h1>Users</h1>
       <div className="card">
         {data.getUsers.map((user) => (
-          <div key={user.id} style={{
-            marginBottom: '20px',
-            padding: '15px',
-            border: '1px solid #646cff',
-            borderRadius: '8px',
-            backgroundColor: 'rgba(100, 108, 255, 0.1)'
-          }}>
-            <p><strong>Name:</strong> {user.name}</p>
-            <p><strong>Age:</strong> {user.age}</p>
-            <p><strong>Married:</strong> {user.isMarried ? "Yes" : "No"}</p>
+          <div
+            key={user.id}
+            style={{
+              marginBottom: "20px",
+              padding: "15px",
+              border: "1px solid #646cff",
+              borderRadius: "8px",
+              backgroundColor: "rgba(100, 108, 255, 0.1)",
+            }}
+          >
+            <p>
+              <strong>Name:</strong> {user.name}
+            </p>
+            <p>
+              <strong>Age:</strong> {user.age}
+            </p>
+            <p>
+              <strong>Married:</strong> {user.isMarried ? "Yes" : "No"}
+            </p>
           </div>
         ))}
       </div>
@@ -39,4 +49,4 @@ function App() {
   );
 }
 
-export default App; 
+export default App;
